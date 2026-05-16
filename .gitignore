@@ -1,5 +1,5 @@
 # Python Environment & Dependencies
-.venv
+venv/
 .direnv
 
 # Python Cache & Build Artifacts
