@@ -18,3 +18,8 @@
 - Assertions are important and I should learn to use them 
 
 ### 0.2
+- I might not actually like coding and may instead just think of it as a means to an end
+- This section really boring to me -- writing code and reimplementing functions just isn't exciting
+- Will skip to 0.3
+
+### 0.3
