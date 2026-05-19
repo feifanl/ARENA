@@ -23,3 +23,6 @@
 - Will skip to 0.3
 
 ### 0.3
+- Not that interesting either
+- Momentum is interesting; coding the optimizers themselves isn't as much
+  - I find the concepts fascinating
