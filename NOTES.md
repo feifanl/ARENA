@@ -26,3 +26,6 @@
 - Not that interesting either
 - Momentum is interesting; coding the optimizers themselves isn't as much
   - I find the concepts fascinating
+
+### 0.4
+- Backprop is simple, and implementing it is boring
