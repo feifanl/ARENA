@@ -29,3 +29,20 @@
 
 ### 0.4
 - Backprop is simple, and implementing it is boring
+
+### 0.5
+- This stuff is much more fun, maybe its because we abstract away a lot of things like optimizers and aren't fiddling around with tensor manipulation
+- It is difficult for autoencoders to generate content
+  - An approach to generation could be sampling randomly from latent space and decoding
+  - But if autoencoder has close to lossless compression, it's likely overfitted and may not have fully coherent latent space
+- Variational autoencoders use regularisation to make autoencoders capable of generative capabilities
+- Encoders act as data compression, decoders reconstruct initial space
+  - Want to find best encoder/decoder pair that minimizes loss on compression and loss on reconstruction
+- VAEs enforce regularization by making encoders encode a distribution over latent space rather than a single point
+  - The decoder then samples from that distribution, and the error from the deconstruction is backpropagated through the network
+  - Since the distribution is enforced to be normal, this is a form of regularization and also prevents overfitting (distribution, and decoder samples randomly)
+  - Regularisation happens using a regularisation term that is expressed as the KL divergence between a standard Gaussian and the encoder's returned distribution
+    - To prevent model from cheating by creating distributions with low variance or with high mean variance, we regularize the mean to be close to 0 and the covariance matrix to avoid narrow distributions
+- GANs work by training a generator and a discriminator: the generator learns to generate better and better outputs to fool the discriminator and the discriminator tries to classify outputs as real or fake
+  - There is a problem of convergence: the discriminator gives feedback to the generator (backpropagation, gradients calculated for generator BUT weights are not updated for discriminator (creates a moving target for generator to optimize against)), but as the generator gets better, the discriminator gets less accurate
+    - This leads to worse feedback as the generator starts training against junk results
