@@ -46,3 +46,11 @@
 - GANs work by training a generator and a discriminator: the generator learns to generate better and better outputs to fool the discriminator and the discriminator tries to classify outputs as real or fake
   - There is a problem of convergence: the discriminator gives feedback to the generator (backpropagation, gradients calculated for generator BUT weights are not updated for discriminator (creates a moving target for generator to optimize against)), but as the generator gets better, the discriminator gets less accurate
     - This leads to worse feedback as the generator starts training against junk results
+
+## Chapter 1
+### 1.1
+- Transforming residual stream vectors to logits at different layers before the final layer can help illuminate how models work
+- Transformer blocks are also called residual blocks and consist of an attention block -> LayerNorm -> MLP -> LayerNorm
+- Function names that end with _ (e.g. masked_fill_) are in-place (modify tensors directly rather than a copy)
+  - In-place is better for memory but breaks backprop / autograd
+- Writing plumbing is boring
