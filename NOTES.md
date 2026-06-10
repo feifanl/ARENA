@@ -65,3 +65,5 @@
 - All words / input are getting computed on at the same time at any given layer, so induction has to be cross-layer, since token B2 doesn't know that token B1 is preceded by A1 since attention hasn't been added to the residual stream yet (computation is not complete)
 
 ### 1.3
+- Already knew most of the high-level components
+- Reimplementing this isn't very interesting
