@@ -1,7 +1,9 @@
 # ARENA Notes
 
 ## Chapter 0
+
 ### 0.0
+
 - Python: Learned some interesting things such as dir(object), __slots__, and pprint
 - Einops: b h w c mean batch height width color
 - Einops: Collapse dimensions using () e.g. "b h w c" -> "b (h w c)"
@@ -12,25 +14,30 @@
 - Learned einsum
 
 ### 0.1
+
 - Manipulating tensors is quite annoying lol
 - intersect_rays_1d was pretty challenging
 - "s.t." means such that
 - Assertions are important and I should learn to use them 
 
 ### 0.2
+
 - I might not actually like coding and may instead just think of it as a means to an end
 - This section really boring to me -- writing code and reimplementing functions just isn't exciting
 - Will skip to 0.3
 
 ### 0.3
+
 - Not that interesting either
 - Momentum is interesting; coding the optimizers themselves isn't as much
   - I find the concepts fascinating
 
 ### 0.4
+
 - Backprop is simple, and implementing it is boring
 
 ### 0.5
+
 - This stuff is much more fun, maybe its because we abstract away a lot of things like optimizers and aren't fiddling around with tensor manipulation
 - It is difficult for autoencoders to generate content
   - An approach to generation could be sampling randomly from latent space and decoding
@@ -48,7 +55,9 @@
     - This leads to worse feedback as the generator starts training against junk results
 
 ## Chapter 1
+
 ### 1.1
+
 - Transforming residual stream vectors to logits at different layers before the final layer can help illuminate how models work
 - Transformer blocks are also called residual blocks and consist of an attention block -> LayerNorm -> MLP -> LayerNorm
 - Function names that end with _ (e.g. masked_fill_) are in-place (modify tensors directly rather than a copy)
@@ -56,6 +65,7 @@
 - Writing plumbing is boring
 
 ### 1.2
+
 - Attention heads represent different ways to compute the relationships between words in sequences
   - Each head has its own set of weight matrices: W_o (projects the output back up, same size as d_model), W_q (what are we looking for / where to move information to), W_k (what each token advertises about itself / where to move information from), and W_v (what the token sends with attention / what information to move)
   - Each head has 3 * d_model * d_model / d_heads parameters -- 3 because of key, value, query, d_model for the size of the input and d_model / d_heads because the output from each head is concatenated, so concatenating d_model / d_heads across all heads -> d_model, otherwise the space would be too large would need to recompress
@@ -65,8 +75,84 @@
 - All words / input are getting computed on at the same time at any given layer, so induction has to be cross-layer, since token B2 doesn't know that token B1 is preceded by A1 since attention hasn't been added to the residual stream yet (computation is not complete)
 
 ### 1.3.1
+
 - Already knew most of the high-level components
 - Reimplementing this isn't very interesting
 
 ### 1.3.2
+
 - Already knew most of this, doing it for UQ research, so skip part of it + skim
+
+### 1.3.3
+
+#### Notes from Readings
+
+Notes from `Toy Models of Superposition (2022)`, `Towards Monosemanticity - Decomposing Language Models With Dictionary Learning (2023)`, and `Scaling Monosemanticity - Extracting Interpretable Features from Claude 3 Sonnet (2024)`:
+
+##### Notes from Toy Models of Superposition
+
+The researchers try and study superposition in toy models to see if they might occur naturally as well, and also find a litany of interesting results like evidence of phase changes, energy level shifts, geometric structure, and "unexpectedly rich structure."
+
+Their results are:
+
+- Superposition is real
+- Monosemantic and polysemantic neurons can both form in the same model
+- Computation can be performed in superposition
+- Superposition is a phase change (monosemantic -> polysemantic at some stage)
+- Superposition organizes features using geometry
+
+Interesting things I didn't know:
+
+- Privileged bases are where the basis direction matters
+  -Activation functions cause features to align with basis directions, or "neurons" -- this is because the neuron's activations are directly relevant to outputs so you have to treat them as individual units that features should map onto
+  - We might expect interpretable, monosemanctic neurons with privileged bases, but superposition occurs because n_dimensions > n_neurons
+    - You can have exponentially more "almost orthogonal" vectors in $n$-dimensional space, but only $n$ exactly orthogonal ones
+    - Because vectors are *sparse* (one-hot encodings), you can often reconstruct original vectors after projecting them into lower-dimensional space
+    - Sparsity also means vectors interfere with each other less because they are less often active at the same time (so "almost orthogonal" is less punishing)
+- Superposition can be in some way thought of as a model simulating in a lower-dimensional space what a larger more powerful model would do (with monosemantic neurons)
+- Negative biases are useful to discard noise from almost orthogonal vectors
+- Models often use antipodal pairs to encode two features into one direction
+- Correlated features are in superposition less (if they occur together often, the noise introduced will be more harmful), while anti-correlated features exhibit superposition more
+  - PCA gets better with more correlation, superposition gets better with more sparsity
+- Feature dimensionality exhibits jumps like energy jumps during training -- this might explain non-smoothness in the loss curve
+
+We hope to reduce occurrences of superposition while preserving model performance -- if each neuron mapped cleanly to a feature, interpretability would become far easier. The researchers identify three approaches: 1) train models without superposition through techniques like L1 regularization which punish neurons that are not that important, 2) find an overcomplete basis by mapping features onto neurons and circuits. Both are difficult and sacrifice performance.
+
+##### Notes from Towards Monosemanticity
+
+The researchers train sparse autoencoders to extract monosemantic features from a model that exhibits superposition. Many of these features are "invisible to the neuron basis," which means you would never detect them just by looking at neuron activations.
+
+The researchers moved towards SAEs as an approach rather than training models to be monosemantic from the start, since they believe that even when forcing neurons to only have one-hot activations, they still exhibit polysemanticity to decrease loss. The model ambiguously predicts a set of features rather than picking one and ignoring the rest.. Note that this is a problem specifically with cross-entropy loss.
+
+The basic concept behind SAEs is to take low-dimensional dense vectors and represent them with higher-dimensional sparse vectors to extract individual features. SAEs are trained on LLM activations and then reconstruct their activations while using a much larger d_hidden (a multiple of d_model), with sparsity enforced through L1 regularization. In essence, this means that sparse autoencoders can use the training that the smaller LLM has already undergone, and extract features into sparse high-dimensional space. Researchers can then use SAEs to identify which features are activating on given text prompts and identify which features correspond to what in the LLM activations. SAEs are cheaper because they aren't run at inference-time, just in the lab, and because they leverage frozen model LLMs and merely have to reconstruct activation vectors.
+
+SAEs take in LLM activations as input, and output reconstructed LLM activations as output, using MSE to become more accurate. The output itself is not that relevant for actual use in research -- instead, we use the middle layer with d_hidden. Decoding SAE activations at those points yield *approximately* similar activations to the LLM, which is what makes SAEs so useful.
+
+In essence, we train SAEs to represent features individually, but we don't know what it's represented, so we use a large corpus of inputs and identify what activations fire hardest on, e.g. "Golden Gate Bridge." That allows us to have relatively high confidence that those activations correspond to a given feature.
+
+Since hand-labelling features is slow, we can use LLMs to generate text and identify which activations light up the most, and identify features that way in an automated fashion.
+
+Other results:
+
+- Features split as models get larger
+- Features are mostly universal
+- Features are mostly interpretable
+  - Compared to neurons, with a median interpretability score of 0 when graded by humans, features had a score of 12 (where > 8 -> interpretable)
+- Features are not perfectly monosemantic or interpretable, and features extracted by SAEs do not perfectly represent how LLMs encode features
+
+##### Notes from Scaling Monosemanticity
+
+The researchers extend their research using SAEs in [[Towards Monosemanticity - Decomposing Language Models With Dictionary Learning (2023)]] to Claude 3 Sonnet in an attempt to scale SAEs to larger models. They successfully extract a variety of rich features from the model, including multilingual and abstract concepts, as well as safety-relevant ones like sycophancy and lying.
+
+Things I learned:
+
+- SAEs are composed of an encoder layer, a hidden layer, and a decoder layer
+  - The encoder layer consists of linear transformations + ReLU (enforces actual sparsity by clipping negative activations to 0)
+  - The hidden layer is what is useful
+  - The decoder layer consists of linear transformations to reconstruct the LLM activations (only linear, otherwise steering is impossible and because superposition is a combination of linear directions)
+- They were able to steer the model using a feature they found corresponding to deception to elicit accurate and honest answers
+
+#### Notes from lesson proper
+
+- We use "latent" to refer to features that the SAE extracts, and "features" as the actual base features in the LLM (the two should be very similar)
+- We can use SAELens to cache SAE activations, replace transformer activations with SAE reconstructions (`use_error_term`), quantify the logit difference (reconstruction loss), run with SAEs, etc.
