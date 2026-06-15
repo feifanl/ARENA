@@ -156,3 +156,10 @@ Things I learned:
 
 - We use "latent" to refer to features that the SAE extracts, and "features" as the actual base features in the LLM (the two should be very similar)
 - We can use SAELens to cache SAE activations, replace transformer activations with SAE reconstructions (`use_error_term`), quantify the logit difference (reconstruction loss), run with SAEs, etc.
+
+### 1.3.4
+
+- Activation oracles are an interesting idea that I've thought about before, since it seems to be useful
+- The lesson correctly flags that they would be incredibly useful in providing more general and accessible interpretability techniques, but that we might lose some mechanical information (e.g. directions we can ablate and use for steering) in the process. AOs are not a replacement for other interp techniques
+- The oracle model is adapted using LoRA -- low-rank adaptation -- which uses low-rank matrices to fine-tune models by only affecting a few parameters in weight matrices
+- **I've decided that given I will do this curriculum with CAMBRIA and I'm not that interested in writing the code, skimming it and understanding the concepts is more useful** 
