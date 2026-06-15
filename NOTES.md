@@ -162,4 +162,13 @@ Things I learned:
 - Activation oracles are an interesting idea that I've thought about before, since it seems to be useful
 - The lesson correctly flags that they would be incredibly useful in providing more general and accessible interpretability techniques, but that we might lose some mechanical information (e.g. directions we can ablate and use for steering) in the process. AOs are not a replacement for other interp techniques
 - The oracle model is adapted using LoRA -- low-rank adaptation -- which uses low-rank matrices to fine-tune models by only affecting a few parameters in weight matrices
-- **I've decided that given I will do this curriculum with CAMBRIA and I'm not that interested in writing the code, skimming it and understanding the concepts is more useful** 
+- __I've decided that given I will do this curriculum with CAMBRIA and I'm not that interested in writing the code, skimming it and understanding the concepts is more useful__
+
+### 1.4.1
+
+Skip
+
+### 1.5.1
+
+- Transcoders are variants of SAEs that reconstruct model computations (e.g. MLP input -> MLP output) rather than just activations at a static point
+  - Also called input-output SAEs, since the SAE takes in layer input and predicts output
