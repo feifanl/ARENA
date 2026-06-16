@@ -168,7 +168,19 @@ Things I learned:
 
 Skip
 
-### 1.5.1
+### 1.4.2
 
 - Transcoders are variants of SAEs that reconstruct model computations (e.g. MLP input -> MLP output) rather than just activations at a static point
   - Also called input-output SAEs, since the SAE takes in layer input and predicts output
+
+### 1.5.1
+
+Skip
+
+### 1.5.2
+
+Skip since I've already done this!
+
+### 1.5.3
+
+### 1.5.4
