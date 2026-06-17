@@ -166,7 +166,7 @@ Things I learned:
 
 ### 1.4.1
 
-Skip
+Skim
 
 ### 1.4.2
 
@@ -175,12 +175,14 @@ Skip
 
 ### 1.5.1
 
-Skip
+Skim
 
 ### 1.5.2
 
 Skip since I've already done this!
 
 ### 1.5.3
+
+Skim
 
 ### 1.5.4
