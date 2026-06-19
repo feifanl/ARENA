@@ -188,3 +188,15 @@ Skim
 ### 1.5.4
 
 Skim
+
+## Chapter 3
+
+### 3.1
+
+- Don't want to pay for GPT-4o-mini, so swapping out with free Gemini API key
+
+### 3.2
+
+### 3.3
+
+### 3.4
