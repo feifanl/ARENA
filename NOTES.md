@@ -18,7 +18,7 @@
 - Manipulating tensors is quite annoying lol
 - intersect_rays_1d was pretty challenging
 - "s.t." means such that
-- Assertions are important and I should learn to use them 
+- Assertions are important and I should learn to use them
 
 ### 0.2
 
@@ -194,6 +194,8 @@ Skim
 ### 3.1
 
 - Don't want to pay for GPT-4o-mini, so swapping out with free Gemini API key
+- Models might lock-in preferences/goals and resist changes to them in the future
+- The result in Alignment Faking of LLMs is less so about the specific goal (always be helpful, contrasting with previous training to be harmless), it is more so about model tendencies towards preference preservation
 
 ### 3.2
 
