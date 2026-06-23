@@ -205,4 +205,6 @@ Skimmed.
 
 ### 3.3
 
+I don't have the datasets saved and I'm going to learn this anyway for memory management research, so skim.
+
 ### 3.4
