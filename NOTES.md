@@ -199,6 +199,10 @@ Skim
 
 ### 3.2
 
+This section is pretty straightforward, I know all of it and it's mostly qualitative.
+
+Skimmed.
+
 ### 3.3
 
 ### 3.4
