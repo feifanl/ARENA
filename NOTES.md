@@ -208,3 +208,5 @@ Skimmed.
 I don't have the datasets saved and I'm going to learn this anyway for memory management research, so skim.
 
 ### 3.4
+
+Already did HF course, this is not necessary (and I don't have API key).
