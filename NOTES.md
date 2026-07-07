@@ -1,5 +1,7 @@
 # ARENA Notes
 
+--
+
 ## Chapter 0
 
 ### 0.0
@@ -53,6 +55,8 @@
 - GANs work by training a generator and a discriminator: the generator learns to generate better and better outputs to fool the discriminator and the discriminator tries to classify outputs as real or fake
   - There is a problem of convergence: the discriminator gives feedback to the generator (backpropagation, gradients calculated for generator BUT weights are not updated for discriminator (creates a moving target for generator to optimize against)), but as the generator gets better, the discriminator gets less accurate
     - This leads to worse feedback as the generator starts training against junk results
+
+--
 
 ## Chapter 1
 
@@ -189,6 +193,8 @@ Skim
 
 Skim
 
+--
+
 ## Chapter 3
 
 ### 3.1
@@ -210,3 +216,28 @@ I don't have the datasets saved and I'm going to learn this anyway for memory ma
 ### 3.4
 
 Already did HF course, this is not necessary (and I don't have API key).
+
+--
+
+## Chapter 4
+
+### 4.1
+
+The code in this chapter doesn't seem that interesting, but the concepts are.
+
+### 4.2
+
+Too expensive to run, so I read through it instead.
+
+### 4.3
+
+I couldn't run through the code, but I read through it:
+
+- Reasoning traces can be chunked into units of *sentences* rather than tokens
+- We can use black box methods to identify which traces are most important by forcing the model to answer after a specific sentence
+- We can use white box methods by analyzing *receiver heads*
+  - Receiver heads are attention heads that attend spikily to specific sentences, they have high kurtosis (low variance)
+  - We call this *vertical attention scores*, or how much future sentences attend to the current one
+  - Kurtosis allows us to easily identify receiver heads
+  - We can suppress the receiver head attention scores
+- Sentences in CoT can be regenerated even after we move them, which introduces the concept of **resilience**
