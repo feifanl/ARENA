@@ -240,4 +240,14 @@ I couldn't run through the code, but I read through it:
   - We call this *vertical attention scores*, or how much future sentences attend to the current one
   - Kurtosis allows us to easily identify receiver heads
   - We can suppress the receiver head attention scores
-- Sentences in CoT can be regenerated even after we move them, which introduces the concept of **resilience**
+- Sentences in CoT can be regenerated even after we move them, which introduces the concept of __resilience__
+
+### 4.4
+
+- We can extract persona vectors by giving LLMs persona system prompts and then prompting them "in-character"
+- When averaging a large number of vectors, they often have a shared component which causes cos sim to be very close to 1.0 when averaging reduces noise
+  - We can fix this by subtracting the shared component (the mean) and centering the vectors
+- The effect of steering can be amplified by steering at every position in the residual stream, especially when using KV caching (it modifies the cache and thus effects cascade downstream)
+- *Contrastive prompting*, or prompting models with two contrasting prompts, can be used with diff in mean activations to extract vectors
+
+### 4.5
