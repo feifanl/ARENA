@@ -251,3 +251,12 @@ I couldn't run through the code, but I read through it:
 - *Contrastive prompting*, or prompting models with two contrasting prompts, can be used with diff in mean activations to extract vectors
 
 ### 4.5
+
+- High API cost so didn't run code
+- We can automate multi-turn interactions and use them for safety analysis
+  - This seems much less robust -- LLM judges and LLM outputs naturally decrease determinism and make experiment results less compelling, and LLM judges by themselves can be faulty
+  - Anthropic's Petri tool automates this
+
+---
+
+## Chapter 2
