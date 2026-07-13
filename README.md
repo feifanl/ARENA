@@ -52,7 +52,7 @@ Huge shout out to LISA for making the curriculum public and doing so much for th
 
 ### Chapter 2: Reinforcement Learning
 
-- [ ] 2.1: Intro to RL (multi-armed bandits, tabular methods)
+- [x] 2.1: Intro to RL (multi-armed bandits, tabular methods)
 - [ ] 2.2: Deep Q-Network (DQN) and Vanilla policy gradient (VPG)
 - [ ] 2.3: Proximal Policy Optimization (PPO)
 - [ ] 2.4: Reinforcement learning from human feedback (RLHF)
@@ -65,8 +65,8 @@ Huge shout out to LISA for making the curriculum public and doing so much for th
 
 ### Chapter 3: LLM Evaluations
 
-- [ ] 3.1: Intro to evals (capability + alignment evals)
-- [ ] 3.2: Dataset generation
+- [x] 3.1: Intro to evals (capability + alignment evals)
+- [x] 3.2: Dataset generation
 - [ ] 3.3: Running evals with Inspect (UK AISI framework)
 - [ ] 3.4: LLM agents (tool use, agentic eval design)
 
@@ -77,14 +77,14 @@ Huge shout out to LISA for making the curriculum public and doing so much for th
 
 ### Chapter 4: Alignment Science
 
-- [ ] 4.1: Emergent misalignment
-- [ ] 4.2: Science of misalignment
-- [ ] 4.3: Interpreting reasoning models (interp on chain-of-thought reasoning models)
-- [ ] 4.4: LLM Psychology & Persona Vectors
-- [ ] 4.5: Investigator Agents (Petri, Bloom)
+- [x] 4.1: Emergent misalignment
+- [x] 4.2: Science of misalignment
+- [x] 4.3: Interpreting reasoning models (interp on chain-of-thought reasoning models)
+- [x] 4.4: LLM Psychology & Persona Vectors
+- [x] 4.5: Investigator Agents (Petri, Bloom)
 
 **Associated papers**:
 
-- [ ] **4.1 — Emergent misalignment**: [Emergent Misalignment: Narrow Finetuning Can Produce Broadly Misaligned LLMs](https://arxiv.org/abs/2502.17424) (Betley et al., 2025)
-- [ ] **4.4 — LLM psychology & persona vectors**: [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) (Chen et al., 2025)
+- [x] **4.1 — Emergent misalignment**: [Emergent Misalignment: Narrow Finetuning Can Produce Broadly Misaligned LLMs](https://arxiv.org/abs/2502.17424) (Betley et al., 2025)
+- [x] **4.4 — LLM psychology & persona vectors**: [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) (Chen et al., 2025)
 - [ ] **4.5 — Investigator agents**: [Petri: An Open-Source Auditing Tool to Accelerate AI Safety Research](https://www.anthropic.com/research/petri-open-source-auditing) (Anthropic, 2025)
