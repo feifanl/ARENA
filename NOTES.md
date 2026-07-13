@@ -1,7 +1,5 @@
 # ARENA Notes
 
---
-
 ## Chapter 0
 
 ### 0.0
@@ -56,7 +54,7 @@
   - There is a problem of convergence: the discriminator gives feedback to the generator (backpropagation, gradients calculated for generator BUT weights are not updated for discriminator (creates a moving target for generator to optimize against)), but as the generator gets better, the discriminator gets less accurate
     - This leads to worse feedback as the generator starts training against junk results
 
---
+---
 
 ## Chapter 1
 
@@ -193,7 +191,7 @@ Skim
 
 Skim
 
---
+---
 
 ## Chapter 3
 
@@ -217,7 +215,7 @@ I don't have the datasets saved and I'm going to learn this anyway for memory ma
 
 Already did HF course, this is not necessary (and I don't have API key).
 
---
+---
 
 ## Chapter 4
 
@@ -260,3 +258,34 @@ I couldn't run through the code, but I read through it:
 ---
 
 ## Chapter 2
+
+### 2.1
+
+- In RL, agents interact with an environment in a loop
+  - They sample an action $a$, given their policy $\pi$ and state $s$, and receive a (state, reward) pair
+  - The environment and policy are both *Markovian* -- they depend only on their past state and action or current state
+- Trajectories, or rollouts, denoted by $\tau$, are the full set of interactions between an agent and its environment, including every state, action and reward
+- The agent's goal is to maximize its *expected discount return*, or the expected sum of future discounted rewards if it continues using its current $\pi$
+  - We denote the expected discount return at a specific state as the value function $V_\pi(s)$
+- $Q$-value, or action-value function, is denoted by $Q_\pi(s, a)$, and can be thought of "take action $a$ at state $s$ and then continue following $\pi$"
+  - We can update our policy $\pi$ via the $Q$-value: if there exists an action $a'$ where $Q_\pi(s, a')$ > $V_\pi(s)$, then $\pi$ needs to update to reflect the more optimal action $a'$
+- In Tabular RL, where we know a lot, $\pi$ can simply be a lookup table from states to optimal actions
+  - $\pi$ algorithms are called *planning algorithms*, since the agent is aware of all the states and rewards and can simply plan ahead
+    - Just memorization basically
+  - In contrast, most RL tasks deal with *model-free algorithms*, such as $Q$-learning, where the agent needs to explore its environment to understand the rewards and states
+
+Model-free algorithms:
+
+- *SARSA*: On-policy TD control -- temporal difference, improving current predictions based off future predictions (not future results)
+  - We can think of this as updating the actions to be more on-policy
+- $Q$-learning: Off-policy TD control: updating the policy itself to be better
+
+### 2.2
+
+### 2.2.1
+
+### 2.2.2
+
+### 2.3
+
+### 2.4
