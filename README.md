@@ -53,7 +53,7 @@ Huge shout out to LISA for making the curriculum public and doing so much for th
 ### Chapter 2: Reinforcement Learning
 
 - [x] 2.1: Intro to RL (multi-armed bandits, tabular methods)
-- [ ] 2.2: Deep Q-Network (DQN) and Vanilla policy gradient (VPG)
+- [x] 2.2: Deep Q-Network (DQN) and Vanilla policy gradient (VPG)
 - [ ] 2.3: Proximal Policy Optimization (PPO)
 - [ ] 2.4: Reinforcement learning from human feedback (RLHF)
 

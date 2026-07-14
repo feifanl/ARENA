@@ -282,6 +282,14 @@ Model-free algorithms:
 
 ### 2.2
 
+- Deep Q-Network, or DQN, is the extension of Q-learning into deep-learning. We use an NN to find optimal Q-values rather than storing them in a table
+  - We calculate TD error and use that to update $\pi$
+  - TD error represents how close actual reward and future reward values are compared to what we expected, like "surprise"
+- Vanilla Policy Gradient (VPG) - uses the Policy Gradient Theorem
+  - Policy gradient methods seek to find the policy itself (rather than approximating policy like in Q-learning)
+    - Usually a neural network optimizes the expected reward via gradient ascent
+    - The Policy Gradient Theorem allows us to optimize the expected reward -- since we don't have the gradient of the return itself (function is unknown, we don't have full knowledge of environment for example), we can use the logit weighted return as an estimator
+
 ### 2.2.1
 
 ### 2.2.2
