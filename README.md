@@ -54,13 +54,13 @@ Huge shout out to LISA for making the curriculum public and doing so much for th
 
 - [x] 2.1: Intro to RL (multi-armed bandits, tabular methods)
 - [x] 2.2: Deep Q-Network (DQN) and Vanilla policy gradient (VPG)
-- [ ] 2.3: Proximal Policy Optimization (PPO)
+- [x] 2.3: Proximal Policy Optimization (PPO)
 - [ ] 2.4: Reinforcement learning from human feedback (RLHF)
 
 **Associated papers**:
 
 - [ ] **2.2 — DQN**: [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602) (Mnih et al., 2013)
-- [ ] **2.3 — PPO**: [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347) (Schulman et al., 2017)
+- [x] **2.3 — PPO**: [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347) (Schulman et al., 2017)
 - [ ] **2.4 — RLHF**: [Deep Reinforcement Learning from Human Preferences](https://arxiv.org/abs/1706.03741) (Christiano et al., 2017) · [Fine-Tuning Language Models from Human Preferences](https://arxiv.org/abs/1909.08593) (Ziegler et al., 2019)
 
 ### Chapter 3: LLM Evaluations

@@ -290,10 +290,11 @@ Model-free algorithms:
     - Usually a neural network optimizes the expected reward via gradient ascent
     - The Policy Gradient Theorem allows us to optimize the expected reward -- since we don't have the gradient of the return itself (function is unknown, we don't have full knowledge of environment for example), we can use the logit weighted return as an estimator
 
-### 2.2.1
-
-### 2.2.2
-
 ### 2.3
+
+- PPO, or proximal policy optimization, is a very popular RL algorithm
+- Change policy according to advantage function (generalized advantage estimation, or GAE) -- $Q_\theta(s_t, a_t) - V_\theta(s_t)$
+- We use an actor network and a critic network
+- We use a clipped surrogate objective function to prevent updating the policy too rapidly and causing policy collapse
 
 ### 2.4
