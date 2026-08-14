@@ -1,8 +1,8 @@
-# ARENA 3.0 AI Safety Curriculum (WIP)
+# ARENA 3.0 AI Safety Curriculum
 
 My copy of the [ARENA AI Safety Curriculum](https://www.arena.education/curriculum) from [London Initiative for Safe AI (LISA)](https://www.safeai.org.uk/). ARENA is a structured curriculum that covers deep learning fundamentals, transformers, mechanistic interpretability, reinforcement learning, LLM evaluations, and other alignment topics such as emergent misalignment. This repo tracks my progress and key takeaways.
 
-While self-studying ARENA, I have also replicated the seminal papers behind each section.
+While self-studying ARENA, I have also replicated some of the papers behind each section.
 
 Huge shout out to LISA for making the curriculum public and doing so much for the AI safety space!
 
